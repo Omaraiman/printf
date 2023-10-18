@@ -17,8 +17,8 @@ int _printf(const char *format, ...)
 	{
 		if (*format != '%')
 		{
-		write(1, format, 1);
-		counter++;
+			write(1, format, 1);
+			counter++;
 		}
 		else
 		{
@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 			else if (*format == 's')
 				handle_string(my_list, &counter);
 			else if (*format == 'd' || *format == 'i')
-				handle_intger(my_list);
+				counter += handle_intger(my_list);
 			else
 			{
 				write(1, "%", 1);
