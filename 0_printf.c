@@ -26,7 +26,7 @@ int _printf(const char *format, ...)
 			if (*format == '\0')
 				return (-1);
 			if (*format == '%')
-				handle_percent();
+				handle_percent(&counter);
 			else if (*format == 'c')
 				handle_char(my_list, &counter);
 			else if (*format == 's')

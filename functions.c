@@ -76,10 +76,12 @@ void handle_intger(va_list my_list)
 }
 /**
  * handle_percent - A function that handles the percent character
+ * @counter: A pointer to the counter to increment
  */
-void handle_percent(void)
+void handle_percent(int *counter)
 {
 	char percent = '%';
 
 	write(1, &percent, 1);
+	(*counter) += 1;
 }
