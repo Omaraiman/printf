@@ -18,13 +18,19 @@ void handle_char(va_list my_list, int *counter)
  */
 void handle_string(va_list my_list, int *counter)
 {
-	char *strings = va_arg(my_list, char*);
 	int i = 0;
+	char *strings = va_arg(my_list, char*);
 
-	for (; strings[i] != '\0'; i++)
+	if (strings == NULL)
 	{
+		strings = "(null)";
 	}
-	write(1, strings, i);
+	while (strings[i] != '\0')
+	{
+		write(1, &strings[i], 1);
+		i++;
+	}
+
 	*counter += i;
 }
 /**
