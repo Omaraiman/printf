@@ -32,7 +32,7 @@ int _printf(const char *format, ...)
 			else if (*format == 's')
 				handle_string(my_list, &counter);
 			else if (*format == 'd' || *format == 'i')
-				counter += handle_intger(my_list);
+			counter += handle_intger(my_list);
 			else
 			{
 				write(1, "%", 1);
