@@ -36,19 +36,19 @@ void handle_string(va_list my_list, int *counter)
 /**
  * handle_intger - handel intger numper
  *  @my_list: The va_list from which to get the string
- * Return: Number of characters printed
 */
-int handle_intger(va_list my_list)
+void handle_intger(va_list my_list)
 {
-	char bufr[1024], crnt;
+	char bufr[40];
 	int integer = va_arg(my_list,  int);
 	int ptr = 0;
 	int is_neg = 0;
-	int i, digit;
+	int i;
 
 	if (integer < 0)
 	{
 		bufr[ptr++] = '-';
+		integer = -integer;
 		is_neg = 1;
 	}
 	if (integer == 0)
@@ -58,11 +58,7 @@ int handle_intger(va_list my_list)
 
 	while (integer)
 	{
-		digit = integer % 10;
-
-		if (is_neg)
-			digit = -digit;
-		crnt = digit + '0';
+		char crnt = (integer % 10) + '0';
 
 		bufr[ptr++] = crnt;
 		integer = integer / 10;
@@ -77,17 +73,13 @@ int handle_intger(va_list my_list)
 		bufr[i] = snum, bufr[ptr - i - !(is_neg)] = fnum;
 	}
 	write(1, bufr, ptr);
-
-	return (ptr);
 }
 /**
  * handle_percent - A function that handles the percent character
- * @counter: A pointer to the counter to increment
  */
-void handle_percent(int *counter)
+void handle_percent(void)
 {
 	char percent = '%';
 
 	write(1, &percent, 1);
-	(*counter) += 1;
 }
