@@ -12,7 +12,6 @@ int _printf(const char *format, ...)
 
 	if (format == NULL)
 		return (-1);
-
 	va_start(my_list, format);
 	while (*format)
 	{
@@ -25,8 +24,7 @@ int _printf(const char *format, ...)
 		{
 			format++;
 			if (*format == '\0')
-				break;
-
+				return (-1);
 			if (*format == '%')
 				handle_percent(&counter);
 			else if (*format == 'c')
