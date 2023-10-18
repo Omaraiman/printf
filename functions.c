@@ -91,3 +91,40 @@ void handle_percent(int *counter)
 	write(1, &percent, 1);
 	(*counter) += 1;
 }
+/**
+ * handle_binary - A function that handles a binary number from a va_list
+ * @my_list: The va_list from which to get the binary number
+ * @counter: A pointer to the counter to increment
+ */
+void handle_binary(va_list my_list, int *counter)
+{
+	unsigned int numper = va_arg(my_list, unsigned int);
+	char binary[33];
+	int i = 0;
+	char temp;
+	int j = 0;
+
+	if (numper == 0)
+	{
+		write(1, "0", 1);
+		(*counter)++;
+		return;
+	}
+
+	while (numper)
+	{
+		binary[i++] = (numper % 2) + '0';
+		numper = numper / 2;
+	}
+
+	for (; j < i / 2; j++)
+	{
+		temp = binary[j];
+
+		binary[j] = binary[i - j - 1];
+		binary[i - j - 1] = temp;
+	}
+
+	write(1, binary, i);
+	*counter += i;
+}
