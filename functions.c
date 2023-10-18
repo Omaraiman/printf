@@ -36,10 +36,11 @@ void handle_string(va_list my_list, int *counter)
 /**
  * handle_intger - handel intger numper
  *  @my_list: The va_list from which to get the string
+ * Return: Number of characters printed
 */
-void handle_intger(va_list my_list)
+int handle_intger(va_list my_list)
 {
-	char bufr[40];
+	char bufr[1024];
 	int integer = va_arg(my_list,  int);
 	int ptr = 0;
 	int is_neg = 0;
@@ -73,6 +74,8 @@ void handle_intger(va_list my_list)
 		bufr[i] = snum, bufr[ptr - i - !(is_neg)] = fnum;
 	}
 	write(1, bufr, ptr);
+
+	return (ptr);
 }
 /**
  * handle_percent - A function that handles the percent character
