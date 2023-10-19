@@ -87,7 +87,6 @@ void handle_hex(va_list my_list, int *counter, int uppercase)
 	char bufr[33];
 	int i = 0;
 	char count;
-	int count;
 	int j = 0;
 
 	if (number == 0)
@@ -135,7 +134,7 @@ void handle_format_specifier(char format, va_list my_list, int *counter)
 	else if (format == 's')
 		handle_string(my_list, counter);
 	else if (format == 'd' || format == 'i')
-		*counter += handle_integer(my_list);
+		*counter += handle_intger(my_list);
 	else if (format == 'b')
 		handle_binary(my_list, counter);
 	else if (format == 'u')

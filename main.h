@@ -5,6 +5,7 @@
 #include <unistd.h>
 #include <limits.h>
 
+void handle_format_specifier(char format, va_list my_list, int *counter);
 int _printf(const char *format, ...);
 void handle_char(va_list my_list, int *counter);
 void handle_string(va_list my_list, int *counter);
