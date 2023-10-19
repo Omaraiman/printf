@@ -25,22 +25,7 @@ int _printf(const char *format, ...)
 			format++;
 			if (*format == '\0')
 				return (-1);
-			if (*format == '%')
-				handle_percent(&counter);
-			else if (*format == 'c')
-				handle_char(my_list, &counter);
-			else if (*format == 's')
-				handle_string(my_list, &counter);
-			else if (*format == 'd' || *format == 'i')
-				counter += handle_intger(my_list);
-			else if (*format == 'b')
-				handle_binary(my_list, &counter);
-			else
-			{
-				write(1, "%", 1);
-				write(1, format, 1);
-				counter += 2;
-			}
+			handle_format_specifier(*format, my_list, &counter);
 		}
 		format++;
 	}
